@@ -1,5 +1,5 @@
 # Readme.md
-> Trabalho de N1 de Sistemas Embarcados utilizando Arduino UNO e diversos sensores para medir a temperatura, umidade e luminosidade de um ambiente (referir a [Integrantes.md](main/Integrantes.md) para conhecer os integrantes deste grupo.)
+> Trabalho de N1 de Sistemas Embarcados utilizando Arduino UNO e diversos sensores para medir a temperatura, umidade e luminosidade de um ambiente (referir a [Integrantes.md](main/Integrantes.md) para conhecer os integrantes deste grupo.) - Video: [Youtube](https://youtu.be/1VAtpi4HaL8)
 ### Lista de componentes utilizados:
   -1 MCU (Atmega 328P) - Arduino Uno R3 <br/>
   -1 LDR + Resistor 1KOhm <br/>
