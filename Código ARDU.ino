@@ -5,6 +5,7 @@
 #include <EEPROM.h>
 
 #define PINBUZZER 9
+//Define as Variáveis fora dos limites especificados.
 #define FORA_DOS_LIMITES  !((m_temperatura >= 15)&&(m_temperatura <= 25)) || !((m_umidade >= 30)&&(m_umidade <= 50)) || !((m_luminosidade >= 0)&&(m_luminosidade <= 30))
 
 LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
