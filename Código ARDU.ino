@@ -5,6 +5,7 @@
 #include <EEPROM.h>
 
 #define PINBUZZER 9
+#define FORA_DOS_LIMITES  !((m_temperatura >= 15)&&(m_temperatura <= 25)) || !((m_umidade >= 30)&&(m_umidade <= 50)) || !((m_luminosidade >= 0)&&(m_luminosidade <= 30))
 
 LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);
 const int pinoDHT11 = A2; //PINO ANALÓGICO UTILIZADO PELO DHT11
@@ -80,7 +81,6 @@ B00000
 };
 
 
-
 void setup()
 {
   pinMode(PINBUZZER, OUTPUT); //Setup do Buzzer
@@ -97,6 +97,8 @@ void setup()
   lcd.setCursor(0,1);           
   lcd.print("--Date--Time--");
 
+
+// To do, criar enum para cada estado
   lcd.createChar(1, PAKMAIN_ALIMENTAR);
   lcd.createChar(2, PAKMAIN_COMIDO);
   lcd.createChar(3, GHOST_FANTASMA);
@@ -197,8 +199,8 @@ void loop()
   float m_temperatura = 0; //Media da Temperatura
   while((millis() - tempo_inicio) <= 10000 ) //durante 10 segundos
   {
-	  //DENTRO DESTE WHILE ELE REALIZA O CÁLCULO DAS MEDIDAS DURANTE 10 SEGUNDOS.
-	  //AO FINAL DOS 10 SEGUNDOS, ELE EXIBE A MÉDIA DOS VALORES MEDIDOS POR 50 SEGUNDOS, TOTALIZANDO 1 MINUTO DE ITERAÇÃO
+    //DENTRO DESTE WHILE ELE REALIZA O CÁLCULO DAS MEDIDAS DURANTE 10 SEGUNDOS.
+    //AO FINAL DOS 10 SEGUNDOS, ELE EXIBE A MÉDIA DOS VALORES MEDIDOS POR 50 SEGUNDOS, TOTALIZANDO 1 MINUTO DE ITERAÇÃO
     cont += 1;
     
     //MEDICOES
@@ -217,7 +219,7 @@ void loop()
 
   // Verifica se os valores estão dentro dos limites
   
-  if ( !((m_temperatura >= 15)&&(m_temperatura <= 25)) || !((m_umidade >= 30)&&(m_umidade <= 50)) || !((m_luminosidade >= 0)&&(m_luminosidade <= 30)) )
+  if ( FORA_DOS_LIMITES )
   {
     // EEPROM
     String log_eeprom = "";
